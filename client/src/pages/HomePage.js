@@ -1,9 +1,15 @@
 import React from 'react';
+import MovieSearch from '../components/MovieSearch';
+import Loading from '../components/Loading';
 
-function HomePage(props) {
-  return (
-    <div> Welcome to our Web App! </div>
-  );
+class HomePage extends React.Component {
+  render() {
+    return (
+      <div>
+        <MovieSearch />
+      </div>
+    );
+  }
 }
 
 export default HomePage;

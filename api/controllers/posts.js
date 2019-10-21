@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+
+// Note: similar to `const Post = db.Post;`
 const { Post } = db;
 
 // This is a simple example for providing basic CRUD routes for
@@ -9,7 +11,7 @@ const { Post } = db;
 //    POST   /posts
 //    GET    /posts/:id
 //    PUT    /posts/:id
-//    DELETE /posts/:id 
+//    DELETE /posts/:id
 
 // There are other styles for creating these route handlers, we typically
 // explore other patterns to reduce code duplication.
@@ -24,7 +26,7 @@ router.get('/', (req,res) => {
 
 router.post('/', (req, res) => {
   let { content } = req.body;
-  
+
   Post.create({ content })
     .then(post => {
       res.status(201).json(post);
