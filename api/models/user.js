@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        notNull: true,
+        allowNull: false,
       },
       unique: true
     },
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        notNull: true,
+        allowNull: false,
         isEmail: true,
       },
       unique: true
@@ -26,14 +26,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        notNull: true,
+        allowNull: false,
       }
     },
     fullname: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        notNull: true,
+        allowNull: false,
         isAlpha: true,
       }
     }
