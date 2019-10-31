@@ -43,7 +43,13 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => {
-    //TODO (ElvisRodriguez) add associations to Post and Comment models
+    // Each user may have many posts
+    models.User.hasMany(models.Post, {as: 'UserPost', foreignKey: 'PostID'});
+
+    // Each user may have many comments
+    models.User.hasMany(
+      models.Comment, {as: 'UserComment', foreignKey: 'CommentID'}
+    );
   };
 
   return User;
