@@ -1,25 +1,34 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import './Pages.css';
 
 class LoginPage extends React.Component {
   render() {
     return (
-      <div className="col-10 col-md-8 col-lg-7">
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="username"
-            className="form-control mr-3 rounded"
-          />
-          <input
-            type="password"
-            placeholder="password"
-            className="form-control mr-3 rounded"
-          />
-          <button className="btn btn-primary"> Login </button>
-        </div>
-      </div>
-    );
+          <div className="form-inline ">
+            <h1>Login</h1>  
+            <div className="col center-block ">
+              
+              <div className="input-group">
+                <input
+                  type="text"
+                  placeholder="username"
+                  className="form-control mr-3 rounded"
+                />
+              </div>
+            </div>
+          <div className="form-group mr-2">
+            <div className="col-sm-9 col-md-9 ">
+              <input
+                type="password"
+                placeholder="password"
+                className="form-control mr-6 rounded"
+              />
+            </div>
+          </div>
+            <button className="btn btn-primary button center-button "> Login </button>
+          </div>
+    );  
   }
 }
 
