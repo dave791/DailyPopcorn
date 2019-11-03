@@ -12,14 +12,15 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 500],
         notEmpty: true,
         allowNull: false,
-      }
+      },
     },
     image: {
       type: DataTypes.STRING,
       validate: {
         isUrl: true,
-      }
-    }
+        allowNull: true,
+      },
+    },
   }, {
     sequelize,
     modelName: 'post'

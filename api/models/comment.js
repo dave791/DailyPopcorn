@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 500],
         notEmpty: true,
         allowNull: false,
-      }
-    }
+      },
+    },
   }, {
     sequelize,
     modelName: 'comment'
