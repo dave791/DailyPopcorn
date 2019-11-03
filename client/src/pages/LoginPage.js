@@ -1,14 +1,13 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import './Pages.css';
 
 class LoginPage extends React.Component {
   render() {
     return (
           <div className="form-inline ">
-            <h1>Login</h1>  
+            <div className='col-12'><h1>Login</h1></div>
             <div className="col center-block ">
-              
+
               <div className="input-group">
                 <input
                   type="text"
@@ -28,7 +27,7 @@ class LoginPage extends React.Component {
           </div>
             <button className="btn btn-primary button center-button "> Login </button>
           </div>
-    );  
+    );
   }
 }
 

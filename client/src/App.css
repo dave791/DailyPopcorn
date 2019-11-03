@@ -21,3 +21,10 @@
   color: #09d3ac;
 }
 */
+.center-block {
+  padding: 240px 0;
+}
+
+.center-button {
+  align-content: center;
+}
