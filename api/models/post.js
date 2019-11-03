@@ -9,17 +9,28 @@ module.exports = (sequelize, DataTypes) => {
     content: {
       type: DataTypes.STRING,
       validate: {
-        len: [3, 250],
+        len: [3, 500],
         notEmpty: true,
+        allowNull: false,
       }
     },
+    image: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true,
+      }
+    }
   }, {
     sequelize,
     modelName: 'post'
   });
 
   Post.associate = (models) => {
-    // associations can be defined here
+    // Each post belongs to one user
+    models.Post.belongsTo(models.User, {as: 'Owner', foreignKey: 'UserID'});
+
+    // Each post may have many comments
+    models.Post.hasMany(models.Comment, {as: 'Child', foreignKey: 'CommentID'});
   };
 
   return Post;
