@@ -56,11 +56,11 @@ passport.deserializeUser((id, done) => {
     .catch(err => done(err, null));
 });
 
-// passport.redirectIfLoggedIn = (route) =>
-//   (req, res, next) => (req.user ? res.redirect(route) : next());
-
-// passport.redirectIfNotLoggedIn = (route) =>
-//   (req, res, next) => (req.user ? next() : res.redirect(route));
+// Use this to protect api routes that require a user to be logged in.
+passport.isAuthenticated = () =>
+  (request, response, next) => (
+    request.user ? next() : response.sendStatus(401)
+  );
 
 
 module.exports = passport;
