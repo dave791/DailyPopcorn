@@ -35,12 +35,13 @@
 }
 
 .log-in {
- margin-top: 10px;
+  margin-top: 10px;
 }
 
-.login_image1 {
-  background-image: url("log_im2.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain, cover;
+.welcome_image {
+  background: url("log_im2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
