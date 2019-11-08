@@ -6,6 +6,7 @@ class SignupPage extends React.Component {
     return (
       <div className="col-9 col-md-7 col-lg-5 col-lg6">
         <div className="row center-block">
+        <div className='col-12'><h1>Sign Up</h1></div>
           <div className="input-group">
             <input 
               type="text"
@@ -28,7 +29,7 @@ class SignupPage extends React.Component {
               placeholder="re-enter password"
               className="form-control mr-3 rounded"
             /> 
-            <button className="btn btn-primary center-button" > Sign Up </button>
+            <button className="btn btn-primary center-button sign-up-button" > Sign Up </button>
         </div>
       </div>
     );
