@@ -4,8 +4,8 @@
   "description": "An api backend",
   "main": "index.js",
   "engines": {
-    "node": "13.1.0",
-    "npm": "6.12.1"
+    "node": ">=12.x",
+    "npm": "6.x"
   },
   "scripts": {
     "start": "node api/app.js",
