@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "An api backend",
   "main": "index.js",
-  "engines": {
-    "node": "12.10.0",
-    "npm": "6.x"
-  },
   "scripts": {
     "start": "node api/app.js",
     "dev": "nodemon -r dotenv/config api/app.js",
