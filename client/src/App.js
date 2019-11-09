@@ -9,6 +9,9 @@ import {
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import PrivateRoute from './components/PrivateRoute';
+import AuthLoginButton from './components/AuthLoginButton';
+import AuthSignupButton from './components/AuthSignupButton';
 
 import './App.css';
 
@@ -24,14 +27,10 @@ function Navigation(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/login">
-            Login
-          </NavLink>
+          <AuthLoginButton/>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/signup">
-            Signup
-          </NavLink>
+          <AuthSignupButton/>
         </li>
       </ul>
     </nav>
