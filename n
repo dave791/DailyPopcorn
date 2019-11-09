@@ -1,0 +1,1 @@
+/home/elvisrodriguez1992/.config/versions/node/v10.16.0/bin/n
