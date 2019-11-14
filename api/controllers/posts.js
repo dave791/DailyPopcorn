@@ -14,52 +14,52 @@ const { Post } = db;
 //    PUT    /posts/:id
 //    DELETE /posts/:id
 
-router.get('/', (req,res) => {
+router.get('/', (request,response) => {
   Post.findAll({})
-    .then(posts => res.json(posts));
+    .then(posts => response.json(posts));
 });
 
 router.post('/',
   passport.isAuthenticated(),
-  (req, res) => {
-    let { content } = req.body;
+  (request, response) => {
+    let { content } = request.body;
     Post.create({ content })
       .then(post => {
-        res.status(201).json(post);
+        response.status(201).json(post);
       })
       .catch(err => {
-        res.status(400).json(err);
+        response.status(400).json(err);
       });
   }
 );
 
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
+router.get('/:id', (request, response) => {
+  const { id } = request.params;
   Post.findByPk(id)
     .then(post => {
       if(!post) {
-        return res.sendStatus(404);
+        return response.sendStatus(404);
       }
-      res.json(post);
+      response.json(post);
     });
 });
 
 router.put('/:id',
   passport.isAuthenticated(),
-  (req, res) => {
-    const { id } = req.params;
+  (request, response) => {
+    const { id } = request.params;
     Post.findByPk(id)
       .then(post => {
         if(!post) {
-          return res.sendStatus(404);
+          return response.sendStatus(404);
         }
-        post.content = req.body.content;
+        post.content = request.body.content;
         post.save()
           .then(post => {
-            res.json(post);
+            response.json(post);
           })
           .catch(err => {
-            res.status(400).json(err);
+            response.status(400).json(err);
           });
       });
   }
@@ -67,15 +67,15 @@ router.put('/:id',
 
 router.delete('/:id',
   passport.isAuthenticated(),
-  (req, res) => {
-    const { id } = req.params;
+  (request, response) => {
+    const { id } = request.params;
     Post.findByPk(id)
       .then(post => {
         if(!post) {
-          return res.sendStatus(404);
+          return response.sendStatus(404);
         }
         post.destroy();
-        res.sendStatus(204);
+        response.sendStatus(204);
       });
   }
 );
