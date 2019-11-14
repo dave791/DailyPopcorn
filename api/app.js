@@ -5,10 +5,9 @@ const morgan = require('morgan');
 const path = require('path');
 const db = require('./models');
 const passport = require('./middlewares/authentication');
-const dotenv = require('dotenv');
+console.log(process.env.NODE_ENV);
+const dotenv = require('dotenv').config({path: '../.env'});
 const app = express();
-
-dotenv.config({path: '../.env'});
 
 const PORT = process.env.PORT || 8080;
 
