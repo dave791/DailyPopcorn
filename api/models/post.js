@@ -31,6 +31,11 @@ module.exports = (sequelize, DataTypes) => {
 
     // Each post may have many comments
     models.Post.hasMany(models.Comment, {as: 'Child', foreignKey: 'CommentID'});
+
+    // Multiple posts can refer to the same movie
+    models.Post.belongsToMany(models.Movie, {
+      foreignKey: 'MovieID', through: 'MoviePost'
+    });
   };
 
   return Post;

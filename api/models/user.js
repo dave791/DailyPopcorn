@@ -71,6 +71,11 @@ module.exports = (sequelize, DataTypes) => {
     models.User.hasMany(
       models.Comment, {as: 'UserComment', foreignKey: 'CommentID'}
     );
+
+    // Users can like many movies
+    models.User.belongsToMany(models.Movie, {
+      as: 'LikedMovie', foreignKey: 'MovieID', through: 'UserMovie'
+    });
   };
 
   User.beforeSave((user, options) => {
