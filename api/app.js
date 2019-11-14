@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const db = require('./models');
 const passport = require('./middlewares/authentication');
+const cryptoRandomString = require('crypto-random-string');
 const app = express();
 if (process.env.NODE_ENV !== 'production') {
   const dotenv = require('dotenv').config({path: '../.env'});
@@ -19,7 +20,9 @@ app.use(bodyParser.json())
 // setup passport and session cookies
 app.use(
   expressSession({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || cryptoRandomString({
+      length: 100, type: 'base64'
+    }),
     resave: false,
     saveUninitialized: true
   })
