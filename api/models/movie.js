@@ -65,17 +65,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     shortPlot: {
       type: DataTypes.STRING,
-      validate: {
-        notEmpty: true,
-        allowNull: false,
-      },
     },
     longPlot: {
       type: DataTypes.STRING,
-      validate: {
-        notEmpty: true,
-        allowNull: false,
-      },
     },
     language: {
       type: DataTypes.STRING,
