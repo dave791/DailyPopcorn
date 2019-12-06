@@ -27,8 +27,8 @@ router.post('/',
       .then(post => {
         response.status(201).json(post);
       })
-      .catch(err => {
-        response.status(400).json(err);
+      .catch(error => {
+        response.status(400).json(error);
       });
   }
 );
