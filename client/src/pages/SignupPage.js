@@ -31,6 +31,7 @@ class SignupPage extends React.Component {
             /> 
             <button className="btn btn-primary center-button sign-up-button" > Sign Up </button>
         </div>
+        {/*cool*/}
       </div>
     );
   }
