@@ -29,8 +29,17 @@
   align-content: center;
 }
 
+.center-button-signup {
+  align-content: center;
+}
+
 .sign-up-button {
   margin-left: 230px;
+  margin-top: 80px;
+}
+
+.sign-up-button2 {
+  margin-left: 0px;
   margin-top: 80px;
 }
 
@@ -39,6 +48,14 @@
 }
 
 .welcome_image {
+  background: url("log_im2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.welcome_image2 {
   background: url("log_im2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;

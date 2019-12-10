@@ -4,7 +4,7 @@ import Header from "./Header";
 import Movie from "./Movie";
 import Search from "./Search";
 
-
+let newVal = [];
 const MOVIE_API_URL = "http://www.omdbapi.com/?s=man&apikey=5eca414";
 //http://www.omdbapi.com/?t=&apikey=5eca414
 
@@ -50,7 +50,7 @@ const MovieSearch = () => {
         fetch(MOVIE_API_URL)
             .then(response => response.json())
             .then(jsonResponse => {
-
+          
             dispatch({
                 type: "SEARCH_MOVIES_SUCCESS",
                 payload: jsonResponse.Search
@@ -61,11 +61,24 @@ const MovieSearch = () => {
     const search = searchValue => {
     	dispatch({
       	type: "SEARCH_MOVIES_REQUEST"
-    	});
+      });
+      
+      //algorithm in cases of if the title of movie has spaces.
+      for (let i = 0; i< searchValue.length; i++) {
+          console.log(searchValue.charAt(i))
+          if (searchValue.charAt(i) === " ") {
+            let updatedChar = searchValue.charAt(i).replace(" ", "+")
+              newVal.push(updatedChar)
+            } else {
+              newVal.push(searchValue.charAt(i))
+          }
+      }
 
-        fetch(`https://www.omdbapi.com/?t=${searchValue}&apikey=5eca414`)
-      	.then(response => response.json())
+      console.log(newVal.join(""))
+        fetch(`https://www.omdbapi.com/?t=${newVal.join("")}&apikey=5eca414`)
+        .then(response => response.json())
       	.then(jsonResponse => {
+          console.log(jsonResponse)
         	if (jsonResponse.Response === "True") {
           	dispatch({
                 type: "SEARCH_MOVIES_SUCCESS",
