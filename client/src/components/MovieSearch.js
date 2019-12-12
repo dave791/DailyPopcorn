@@ -44,45 +44,41 @@ const reducer = (state, action) => {
 
 const MovieSearch = () => {
   var [state, dispatch] = useReducer(reducer, initialState);
-
-    useEffect(() => {
-
-        fetch(MOVIE_API_URL)
-            .then(response => response.json())
-            .then(jsonResponse => {
-
-            dispatch({
-                type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.Search
-        	});
+  useEffect(() => {
+    fetch(MOVIE_API_URL)
+        .then(response => response.json())
+        .then(jsonResponse => {
+        dispatch({
+          type: "SEARCH_MOVIES_SUCCESS",
+          payload: jsonResponse.Search
+    	   });
+    	  });
+	}, []);
+  const search = searchValue => {
+  	dispatch({
+    	type: "SEARCH_MOVIES_REQUEST"
+    });
+    const tokenArray = searchValue.split(' ');
+    const validatedURLString = tokenArray.join('+');
+    fetch(
+      `https://www.omdbapi.com/?t=${validatedURLString}&apikey=5eca414`
+    )
+    .then(response => response.json())
+  	.then(jsonResponse => {
+      console.log('JSON RESPONSE', jsonResponse);
+    	if (jsonResponse.Response === "True") {
+      	dispatch({
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload: jsonResponse.Search
       	});
-  	}, []);
-
-    const search = searchValue => {
-    	dispatch({
-      	type: "SEARCH_MOVIES_REQUEST"
-      });
-      const tokenArray = searchValue.split(' ');
-      const validatedURLString = tokenArray.join('+');
-      fetch(
-        `https://www.omdbapi.com/?t=${validatedURLString}&apikey=5eca414`
-      )
-      .then(response => response.json())
-    	.then(jsonResponse => {
-        console.log('JSON RESPONSE', jsonResponse);
-      	if (jsonResponse.Response === "True") {
-        	dispatch({
-              type: "SEARCH_MOVIES_SUCCESS",
-              payload: jsonResponse.Search
-        	});
-      	} else {
-        	dispatch({
-              type: "SEARCH_MOVIES_FAILURE",
-              error: jsonResponse.Error
-        	});
-        }
-    	});
-	  };
+    	} else {
+      	dispatch({
+            type: "SEARCH_MOVIES_FAILURE",
+            error: jsonResponse.Error
+      	});
+      }
+  	});
+  };
 
     var { movies, errorMessage, loading } = state;
 
