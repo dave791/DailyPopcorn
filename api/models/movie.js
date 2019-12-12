@@ -9,59 +9,55 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     year: {
       type: DataTypes.INTEGER,
       validate: {
         notEmpty: true,
-        allowNull: false,
         isNumeric: true,
         len: 4,
       },
+      allowNull: false,
     },
     rating: {
       type: DataTypes.STRING,
       defaultValue: 'Unrated',
-      validate: {
-        allowNull: false,
-      },
+      allowNull: false,
     },
     releaseDate: {
       type: DataTypes.STRING,
       defaultValue: 'TBH',
-      validate: {
-        allowNull: false,
-      },
+      allowNull: false,
     },
     genre: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     director: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     writers: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     actors: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     shortPlot: {
       type: DataTypes.STRING,
@@ -73,22 +69,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     country: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     awards: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     poster: {
       type: DataTypes.STRING,
@@ -106,27 +102,28 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     productionCompany: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     imdbID: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
         isAlphanumeric: true,
       },
+      allowNull: false,
     },
   }, {
     sequelize,
-    modelName: 'movie'
+    modelName: 'movie',
+    freezeTableName: true,
   });
 
   Movie.associate = (models) => {

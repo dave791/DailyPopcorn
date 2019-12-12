@@ -26,6 +26,7 @@ class LoginPage extends React.Component {
         this.setState({ redirectToReferrer: true });
       })
       .catch((err) => {
+        console.log(err);
         this.setState({ failed: true });
       });
   }
@@ -57,7 +58,7 @@ class LoginPage extends React.Component {
                   className="form-control mr-3 rounded log-in"
                   name="username"
                   placeholder="username"
-                  value={this.state.email}
+                  value={this.state.username}
                   onChange={this.fieldChanged('username')}/>
               </div>
               <div className="col-sm-12 col-md-12 col-12">
