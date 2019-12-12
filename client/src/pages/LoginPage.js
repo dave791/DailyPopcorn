@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 import auth from '../services/auth';
 
@@ -25,27 +25,27 @@ class LoginPage extends React.Component {
       .then((user) => {
         this.setState({ redirectToReferrer: true });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
         this.setState({ failed: true });
       });
   }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/'} };
     const { redirectToReferrer, failed } = this.state;
+    console.log('STATE', this.state);
     if (redirectToReferrer) {
-      return <Redirect to ={from} />;
+      return <Redirect to="/" />;
     }
-    let err = "";
+    let error = "";
     if (failed) {
-      err =  <div>
-              <br/>
-              <div className="alert alert-danger col-4 offset-4"
-                 role="alert">
-                 Login failed
+      error = <div>
+                <br/>
+                <div className="alert alert-danger col-4 offset-4"
+                   role="alert">
+                   Login failed
+                </div>
               </div>
-            </div>
     }
     return (
       <div className="col-12 welcome_image">
@@ -75,7 +75,7 @@ class LoginPage extends React.Component {
                 type="submit"
                 className="btn btn-primary button center-button log-in"
               >Login</button>
-              { err }
+              { error }
             </div>
           </div>
         </form>

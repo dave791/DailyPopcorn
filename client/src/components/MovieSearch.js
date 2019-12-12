@@ -17,7 +17,7 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SEARCH_MOVIES_REQUEST":
+    case "SEARCH_MOVIES_FAILURE":
       return {
         ...state,
         loading: true,
@@ -29,7 +29,7 @@ const reducer = (state, action) => {
         loading: false,
         movies: action.payload
       };
-    case "SEARCH_MOVIES_FAILURE":
+    case "SEARCH_MOVIES_REQUEST":
       return {
         ...state,
         loading: false,
@@ -61,7 +61,7 @@ const MovieSearch = () => {
     const tokenArray = searchValue.split(' ');
     const validatedURLString = tokenArray.join('+');
     fetch(
-      `https://www.omdbapi.com/?t=${validatedURLString}&apikey=5eca414`
+      `https://www.omdbapi.com/?s=${validatedURLString}&apikey=5eca414`
     )
     .then(response => response.json())
   	.then(jsonResponse => {
