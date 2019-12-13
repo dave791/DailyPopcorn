@@ -14,8 +14,7 @@ class SignupPage extends React.Component {
                 type="text"
                 placeholder="email"
                 className="form-control mr-3 rounded"
-              />
-            
+              /> 
           </div>
             <div className="col-sm-12 col-md-12 col-12"> 
               <input

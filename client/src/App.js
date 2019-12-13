@@ -9,9 +9,11 @@ import {
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import AboutUsPage from './pages/AboutUsPage';
 import PrivateRoute from './components/PrivateRoute';
 import AuthLoginButton from './components/AuthLoginButton';
 import AuthSignupButton from './components/AuthSignupButton';
+import AuthAboutButton from './components/AuthAboutButton';
 
 import './App.css';
 
@@ -32,6 +34,9 @@ function Navigation(props) {
         <li className="nav-item">
           <AuthSignupButton/>
         </li>
+        <li className="nav-item">
+          <AuthAboutButton/>
+        </li>
       </ul>
     </nav>
   );
@@ -48,6 +53,7 @@ class App extends React.Component {
               <Switch>
                 <Route path="/signup" component={SignupPage} />
                 <Route path="/login" component={LoginPage} />
+                <Route path="/about" component={AboutUsPage} />
                 <Route path="/" component={HomePage} />
               </Switch>
             </div>
