@@ -13,9 +13,11 @@ router.post('/signup', (request, response) => {
     password: request.body.password,
   })
     .then((user) => {
+      console.log(user);
       request.login(user, () => response.status(201).json(user));
     })
     .catch((err) => {
+      console.log(err);
       response.status(400).json({ msg: 'Failed Signup', err });
     });
 });
@@ -25,6 +27,7 @@ router.post('/login',
   (request, response) => {
     // If this function gets called, authentication was successful.
     // `request.user` contains the authenticated user.
+    console.log(request.user);
     response.json(request.user);
   });
 

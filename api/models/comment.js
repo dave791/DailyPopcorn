@@ -11,12 +11,13 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 500],
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
   }, {
     sequelize,
-    modelName: 'comment'
+    modelName: 'comment',
+    freezeTableName: true,
   });
 
   Comment.associate = (models) => {

@@ -4,7 +4,7 @@ import Header from "./Header";
 import Movie from "./Movie";
 import Search from "./Search";
 
-let newVal = [];
+
 const MOVIE_API_URL = "http://www.omdbapi.com/?s=man&apikey=5eca414";
 //http://www.omdbapi.com/?t=&apikey=5eca414
 
@@ -17,7 +17,7 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SEARCH_MOVIES_REQUEST":
+    case "SEARCH_MOVIES_FAILURE":
       return {
         ...state,
         loading: true,
@@ -29,7 +29,7 @@ const reducer = (state, action) => {
         loading: false,
         movies: action.payload
       };
-    case "SEARCH_MOVIES_FAILURE":
+    case "SEARCH_MOVIES_REQUEST":
       return {
         ...state,
         loading: false,
@@ -43,57 +43,44 @@ const reducer = (state, action) => {
 
 
 const MovieSearch = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-    useEffect(() => {
-
-        fetch(MOVIE_API_URL)
-            .then(response => response.json())
-            .then(jsonResponse => {
-          
-            dispatch({
-                type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.Search
-        	});
-      	});
-  	}, []);
-
-    const search = searchValue => {
-    	dispatch({
-      	type: "SEARCH_MOVIES_REQUEST"
-      });
-      
-      //algorithm in cases of if the title of movie has spaces.
-      for (let i = 0; i< searchValue.length; i++) {
-          console.log(searchValue.charAt(i))
-          if (searchValue.charAt(i) === " ") {
-            let updatedChar = searchValue.charAt(i).replace(" ", "+")
-              newVal.push(updatedChar)
-            } else {
-              newVal.push(searchValue.charAt(i))
-          }
-      }
-
-      console.log(newVal.join(""))
-        fetch(`https://www.omdbapi.com/?t=${newVal.join("")}&apikey=5eca414`)
+  var [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    fetch(MOVIE_API_URL)
         .then(response => response.json())
-      	.then(jsonResponse => {
-          console.log(jsonResponse)
-        	if (jsonResponse.Response === "True") {
-          	dispatch({
-                type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.Search
-          	});
-        	} else {
-          	dispatch({
-                type: "SEARCH_MOVIES_FAILURE",
-                error: jsonResponse.Error
-          	});
-          }
+        .then(jsonResponse => {
+        dispatch({
+          type: "SEARCH_MOVIES_SUCCESS",
+          payload: jsonResponse.Search
+    	   });
+    	  });
+	}, []);
+  const search = searchValue => {
+  	dispatch({
+    	type: "SEARCH_MOVIES_REQUEST"
+    });
+    const tokenArray = searchValue.split(' ');
+    const validatedURLString = tokenArray.join('+');
+    fetch(
+      `https://www.omdbapi.com/?s=${validatedURLString}&apikey=5eca414`
+    )
+    .then(response => response.json())
+  	.then(jsonResponse => {
+      console.log('JSON RESPONSE', jsonResponse);
+    	if (jsonResponse.Response === "True") {
+      	dispatch({
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload: jsonResponse.Search
       	});
-	  };
+    	} else {
+      	dispatch({
+            type: "SEARCH_MOVIES_FAILURE",
+            error: jsonResponse.Error
+      	});
+      }
+  	});
+  };
 
-    const { movies, errorMessage, loading } = state;
+    var { movies, errorMessage, loading } = state;
 
     return (
     <div className="App">

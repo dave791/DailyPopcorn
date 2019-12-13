@@ -7,16 +7,17 @@
 
 const auth = {
   isAuthenticated: false,
-  authenticate(email, password) {
+  authenticate(username, password) {
     return fetch('/api/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
       headers: {
         'Content-Type': 'application/json',
       }
     })
       .then((response) => {
         if(!response.ok) {
+          console.log('400 Bad Request');
           throw new Error('Login Failed');
         }
 

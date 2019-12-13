@@ -2,6 +2,8 @@
 const { Model } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
+const PASSWORD_LENGTH = 8;
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     getFullName() {
@@ -14,53 +16,54 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
         isAlpha: true,
       },
+      allowNull: false,
     },
     lastName: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        allowNull: false,
         isAlpha: true,
       },
+      allowNull: false,
     },
     username: {
       type: DataTypes.STRING,
       unique: true,
       validate: {
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
       unique: true,
       validate: {
         notEmpty: true,
-        allowNull: false,
         isEmail: true,
       },
+      allowNull: false,
     },
     password: {
       type: DataTypes.VIRTUAL,
       validate: {
         notEmpty: true,
-        allowNull: false,
         isLongEnough: (value) => {
-          if (value.length < 8) {
+          if (value.length < PASSWORD_LENGTH) {
             throw new Error('Password length too short');
           }
         },
       },
+      allowNull: false,
     },
     passwordHash: {
       type: DataTypes.STRING
     },
   }, {
     sequelize,
-    modelName: 'user'
+    modelName: "user",
+    freezeTableName: true,
   });
 
   User.associate = (models) => {
@@ -79,7 +82,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.beforeSave((user, options) => {
-    if (password) {
+    if (user.password) {
       user.passwordHash = bcrypt.hashSync(user.password, 10);
     }
   });

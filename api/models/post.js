@@ -11,18 +11,17 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 500],
         notEmpty: true,
-        allowNull: false,
       },
+      allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
-      validate: {
-        allowNull: true,
-      },
+      allowNull: true,
     },
   }, {
     sequelize,
-    modelName: 'post'
+    modelName: 'post',
+    freezeTableName: true,
   });
 
   Post.associate = (models) => {
