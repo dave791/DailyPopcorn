@@ -6,11 +6,7 @@ import auth from '../services/auth';
 const classes = "nav-link";
 
 const AuthAboutUsButton = withRouter (({history}) => {
-    if(!auth.isAuthenticated) {
-        return <NavLink className={classes} to="/about">About</NavLink>;
-    }
-
-    return
+    return <NavLink className={classes} to="/about">About</NavLink>;
 });
 
 export default AuthAboutUsButton;

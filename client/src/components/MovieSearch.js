@@ -84,7 +84,7 @@ const MovieSearch = () => {
 
     return (
     <div className="App">
-      <div className="welcome_image2"> {/*background-image*/}
+      <div className="welcome_image2">
       <Header text="The Daily Popcorn" />
       <Search search={search} />
       <p className="App-intro">Sharing a few of our favourite movies</p>
@@ -92,7 +92,7 @@ const MovieSearch = () => {
         {loading && !errorMessage ? (
           <span>loading... </span>
         ) : errorMessage ? (
-          <div className="errorMessage">{errorMessage}</div>
+          <div className="errorMessage col-lg-12">{errorMessage}</div>
         ) : (
           movies.map((movie, index) => (
             <Movie key={`${index}-${movie.Title}`} movie={movie} />

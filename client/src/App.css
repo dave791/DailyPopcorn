@@ -106,20 +106,19 @@
 }
 
 .indent1-AboutUs {
-  color: rgb(128,128,128);
+  color: rgb(128, 128, 128);
   margin-left: 30px;
   font-size: 150%;
-
 }
 
 .resize-image-AboutUs {
   width: 50%;
-  height: auto; 
+  height: auto;
 }
 
 p {
-  color:rgb(128,128,128);
-  font-size: 75%;  
+  color: rgb(128, 128, 128);
+  font-size: 75%;
 }
 
 .search {
@@ -149,8 +148,6 @@ input[type="submit"]:hover {
   width: 40%;
   min-width: 170px;
 }
-
-
 
 @media screen and (min-width: 694px) and (max-width: 915px) {
   .movie {

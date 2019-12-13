@@ -29,13 +29,13 @@ function Navigation(props) {
           </NavLink>
         </li>
         <li className="nav-item">
+          <AuthAboutButton/>
+        </li>
+        <li className="nav-item">
           <AuthLoginButton/>
         </li>
         <li className="nav-item">
           <AuthSignupButton/>
-        </li>
-        <li className="nav-item">
-          <AuthAboutButton/>
         </li>
       </ul>
     </nav>

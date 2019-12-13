@@ -14,12 +14,7 @@ const AuthLoginButton = withRouter(({ history }) => {
     auth.signout().then(() => history.push('/'));
   }
 
-  return (
-    <div>
-      Welcome!
-      <button className={classes} onClick={logout}>Logout</button>
-    </div>
-  );
+  return <NavLink className="nav-link justify-content-center" onClick={logout} to="/">Logout</NavLink>;
 });
 
 export default AuthLoginButton;
