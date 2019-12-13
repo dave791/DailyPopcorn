@@ -43,7 +43,7 @@ class PostFormPage extends React.Component {
   }
 
   render() {
-    if(this.state.success) return <Redirect to="/" />;
+    if(this.state.success) return <Redirect to="/view_posts" />;
 
     let errorMessage = null;
     if(this.state.error) {
@@ -58,15 +58,15 @@ class PostFormPage extends React.Component {
       <div className="col-10 col-md-8 col-lg-7">
         { errorMessage }
         <div className="input-group">
-          <input 
-            type="text" 
-            placeholder="Add your words of wisdom here..." 
+          <textarea rows="5" cols="80"
+            type="text"
+            placeholder="Discuss or Review a Movie!"
             value={this.state.content}
             className="form-control mr-3 rounded"
             onChange={this.contentChanged}
           />
-          <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
         </div>
+        <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
       </div>
     );
   }

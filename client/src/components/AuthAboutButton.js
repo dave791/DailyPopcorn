@@ -1,8 +1,6 @@
 import React from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 
-import auth from '../services/auth';
-
 const classes = "nav-link";
 
 const AuthAboutUsButton = withRouter (({history}) => {

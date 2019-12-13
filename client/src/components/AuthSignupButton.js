@@ -9,7 +9,7 @@ const AuthSignupButton = withRouter(({ history }) => {
   if(!auth.isAuthenticated) {
     return <NavLink className={classes} to="/signup">Signup</NavLink>;
   }
-  //No need to display anything if the user's logged in
+  
   return null;
 });
 

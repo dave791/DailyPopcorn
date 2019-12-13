@@ -4,7 +4,7 @@ const db = require('../models');
 const passport = require('../middlewares/authentication');
 
 // Note: similar to `const Post = db.Post;`
-const { Post } = db;
+const { Post, User } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -16,7 +16,10 @@ const { Post } = db;
 
 router.get('/', (request,response) => {
   Post.findAll({})
-    .then(posts => response.json(posts));
+    .then(posts => {
+      console.log(posts);
+      response.json(posts);
+    });
 });
 
 router.post('/',
