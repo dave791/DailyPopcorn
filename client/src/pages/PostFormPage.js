@@ -24,7 +24,6 @@ class PostFormPage extends React.Component {
       body: JSON.stringify({content: this.state.content}),
     })
       .then(res => {
-        console.log(res);
         if(res.ok) {
           return res.json()
         }
