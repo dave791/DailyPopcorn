@@ -84,6 +84,7 @@ const MovieSearch = () => {
 
     return (
     <div className="App">
+      <div className="welcome_image2"> {/*background-image*/}
       <Header text="The Daily Popcorn" />
       <Search search={search} />
       <p className="App-intro">Sharing a few of our favourite movies</p>
@@ -97,6 +98,7 @@ const MovieSearch = () => {
             <Movie key={`${index}-${movie.Title}`} movie={movie} />
           ))
         )}
+        </div>
       </div>
     </div>
   );

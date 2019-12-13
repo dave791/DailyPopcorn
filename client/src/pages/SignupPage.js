@@ -134,7 +134,6 @@ class SignupPage extends React.Component {
                 className="form-control mr-3 rounded"
                 onChange={this.fieldChanged('email')}
               />
-
           </div>
             <div className="col-sm-12 col-md-12 col-12">
               <input
