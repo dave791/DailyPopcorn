@@ -5,13 +5,15 @@ class PostFormPage extends React.Component {
   state = {
     error: false,
     success: false,
+    title: '',
     content: '',
   }
 
-  contentChanged = (event) => {
-    this.setState({
-      content: event.target.value
-    });
+  fieldChanged = (name) => {
+    return (event) => {
+      let { value } = event.target;
+      this.setState({ [name]: value });
+    }
   }
 
   savePost = (event) => {
@@ -21,7 +23,10 @@ class PostFormPage extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({content: this.state.content}),
+      body: JSON.stringify({
+        title: this.state.title,
+        content: this.state.content
+      }),
     })
       .then(res => {
         if(res.ok) {
@@ -58,12 +63,21 @@ class PostFormPage extends React.Component {
       <div className="col-10 col-md-8 col-lg-7">
         { errorMessage }
         <div className="input-group">
+          <input
+            type="text"
+            placeholder="Movie Title"
+            value={this.state.title}
+            className="form-control mr-3 rounded"
+            onChange={this.fieldChanged('title')}
+          />
+          </div>
+          <div className="input-group">
           <textarea rows="5" cols="80"
             type="text"
-            placeholder="Discuss or Review a Movie!"
+            placeholder="Discuss or Review!"
             value={this.state.content}
             className="form-control mr-3 rounded"
-            onChange={this.contentChanged}
+            onChange={this.fieldChanged('content')}
           />
         </div>
         <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
